@@ -201,7 +201,7 @@
       <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;http&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -209,12 +209,9 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="Logo" />
+      <img src="images/logo-738a3567.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="http">http</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -228,16 +225,36 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#imessages" class="toc-h1 toc-link" data-title="iMessages">iMessages</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#check-for-imessage-compatibility" class="toc-h2 toc-link" data-title="Check for iMessage compatibility">Check for iMessage compatibility</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#send-an-imessage" class="toc-h2 toc-link" data-title="Send an iMessage">Send an iMessage</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#check-imessage-status" class="toc-h2 toc-link" data-title="Check iMessage status">Check iMessage status</a>
+                  </li>
+                  <li>
+                    <a href="#send-videos" class="toc-h2 toc-link" data-title="Send videos">Send videos</a>
+                  </li>
+                  <li>
+                    <a href="#use-tapbacks" class="toc-h2 toc-link" data-title="Use Tapbacks">Use Tapbacks</a>
+                  </li>
+                  <li>
+                    <a href="#apple-cash" class="toc-h2 toc-link" data-title="Apple Cash">Apple Cash</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sms" class="toc-h1 toc-link" data-title="SMS">SMS</a>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#status" class="toc-h2 toc-link" data-title="Status">Status</a>
                   </li>
               </ul>
           </li>
@@ -246,142 +263,71 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='app.usebalto.com/signup'>Sign Up for a Developer Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the balto API docs. Poke around and feel free to reach out with any questions to <code>founders@withterra.com</code></p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+<p>To use any of these APIs, please <a href="app.usebalto.com/signup">Sign up</a> for access to an API Key and our playground.</p>
+<h1 id='authentication'>Authentication</h1><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+  -H <span class="s2">"Authorization: Bearer API_KEY"</span>
 </code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<p>balto expects for the API key to be included in <strong>all</strong> API requests to the server in a header that looks like the following:</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p><code>Authorization: Bearer API_KEY</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>API_KEY</code> with your personal API key.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
+<h1 id='imessages'>iMessages</h1><h2 id='check-for-imessage-compatibility'>Check for iMessage compatibility</h2>
+<p>Check if the given phone number is eligible for iMessages. If it&#39;s not, you can use Twilio to handle it. </p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p><code>GET https://api.usebalto.com/is_imessage/&lt;PHONE&gt;</code></p>
+
+<blockquote>
+<p>The endpoint returns JSON as below:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">given</span><span class="w"> </span><span class="err">phone</span><span class="w"> </span><span class="err">number</span><span class="w">
+  </span><span class="s2">"is_imessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>PHONE</td>
+<td>The phone number to check. Formatted as all numerics i.e. 1234567890</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<h2 id='send-an-imessage'>Send an iMessage</h2>
+<p>Use the following request to send an iMessage to the specified number. </p>
+<h4 id='using-special-effects'>Using Special Effects</h4>
+<p>Special effects are an iMessage property that can be triggered in two ways.
+1. Automatically when using certain phrases i.e. &quot;Congratulations, Happy Birthday!&quot;</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p><code>POST https://api.usebalto.com/send/message</code></p>
+<h3 id='headers'>Headers</h3>
+<table><thead>
+<tr>
+<th>HEADER</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization: Bearer API_KEY</td>
+<td>Your personal API_KEY</td>
+</tr>
+</tbody></table>
+<h3 id='json-body-parameters'>JSON Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -389,38 +335,27 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>PHONE</td>
+<td>The phone number to check. Formatted as all numerics i.e. 1234567890</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>The message you plan to send. i.e. &quot;Hi!&quot;</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The endpoint returns JSON as below:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">given</span><span class="w"> </span><span class="err">phone</span><span class="w"> </span><span class="err">number</span><span class="w">
+  </span><span class="s2">"message_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e71e2af-d91d-4eb9-8af6-c1ca0f910da7"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
+</span></code></pre><h2 id='check-imessage-status'>Check iMessage status</h2>
+<p>iMessages are queued. Use this to check if the message was delivered successfully, read, tapped_back etc.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p><code>GET https://api.usebalto.com/message/&lt;MESSAGE_UUID&gt;</code></p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -428,11 +363,33 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>MESSAGE_UUID</td>
+<td>The message uuid returned when you first sent a message. Or given by the webhook endpoint for when a new message comes in i.e. <code>6e71e2af-d91d-4eb9-8af6-c1ca0f910da7</code>.</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+
+<blockquote>
+<p>The endpoint returns JSON as below:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;MESSAGE_UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_submitted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun, 12 Apr 2020 05:46:48 GMT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_delivered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun, 12 Apr 2020 05:46:49 GMT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_read"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun, 12 Apr 2020 05:47:38 GMT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">||</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">read</span><span class="w">
+  </span><span class="s2">"tapped_back"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heart"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Heart</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Up</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Down</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Ha</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Exclamation</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Question</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='send-videos'>Send videos</h2>
+<p>Documentation coming soon</p>
+<h2 id='use-tapbacks'>Use Tapbacks</h2>
+<p>Documentation coming soon</p>
+<h2 id='apple-cash'>Apple Cash</h2>
+<p>Documentation coming soon</p>
+<h1 id='sms'>SMS</h1>
+<p>Documentation coming soon</p>
+<h1 id='webhooks'>Webhooks</h1>
+<p>Documentation coming soon</p>
+<h2 id='status'>Status</h2><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
@@ -494,10 +451,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="http">http</a>
           </div>
       </div>
     </div>
