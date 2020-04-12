@@ -1,3 +1,19 @@
+
+### ROB's Readme
+
+1. Building 
+-- run `bundle install`
+-- `bundle exec middleman server` to run on localhost
+--> `http://localhost:4567`
+
+2. Editing
+-- `/source/index.html/md`
+
+3. Deploy
+-- Commit
+-- `./deploy.sh` (should be on github pages)
+
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>

@@ -2,14 +2,14 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - http
+  # - shell
+  # - ruby
+  # - python
+  # - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - <a href='app.usebalto.com/signup'>Sign Up for a Developer Key</a>
 
 includes:
   - errors
@@ -19,221 +19,129 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the balto API docs. Poke around and feel free to reach out with any questions to `founders@withterra.com`
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+To use any of these APIs, please <a href="app.usebalto.com/signup">Sign up</a> for access to an API Key and our playground.
 
 # Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: Bearer API_KEY"
 ```
 
-```javascript
-const kittn = require('kittn');
+balto expects for the API key to be included in **all** API requests to the server in a header that looks like the following:
 
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Authorization: Bearer API_KEY`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>API_KEY</code> with your personal API key.
 </aside>
 
-# Kittens
+# iMessages
 
-## Get All Kittens
+## Check for iMessage compatibility
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
+Check if the given phone number is eligible for iMessages. If it's not, you can use Twilio to handle it. 
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://api.usebalto.com/is_imessage/<PHONE>`
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> The endpoint returns JSON as below:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "phone": "PHONE",  // the given phone number
+  "is_imessage" : "True"
 }
 ```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+PHONE | The phone number to check. Formatted as all numerics i.e. 1234567890
 
-## Delete a Specific Kitten
+## Send an iMessage
 
-```ruby
-require 'kittn'
+Use the following request to send an iMessage to the specified number. 
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
+#### Using Special Effects
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
+Special effects are an iMessage property that can be triggered in two ways.
+1. Automatically when using certain phrases i.e. "Congratulations, Happy Birthday!"
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`POST https://api.usebalto.com/send/message`
 
-### URL Parameters
+### Headers
+
+HEADER | Description
+--------- | -----------
+Authorization: Bearer API_KEY | Your personal API_KEY
+
+### JSON Body Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+PHONE | The phone number to check. Formatted as all numerics i.e. 1234567890
+TEXT | The message you plan to send. i.e. "Hi!"
 
+> The endpoint returns JSON as below:
+
+```json
+{
+  "phone": "PHONE",  // the given phone number
+  "message_uuid": "6e71e2af-d91d-4eb9-8af6-c1ca0f910da7"
+}
+```
+
+## Check iMessage status
+
+iMessages are queued. Use this to check if the message was delivered successfully, read, tapped_back etc.
+
+### HTTP Request
+
+`GET https://api.usebalto.com/message/<MESSAGE_UUID>`
+
+Parameter | Description
+--------- | -----------
+MESSAGE_UUID | The message uuid returned when you first sent a message. Or given by the webhook endpoint for when a new message comes in i.e. `6e71e2af-d91d-4eb9-8af6-c1ca0f910da7`.
+
+> The endpoint returns JSON as below:
+
+```json
+{
+  "phone": "1234567890",
+  "message_uuid": "<MESSAGE_UUID",
+  "date_submitted": "Sun, 12 Apr 2020 05:46:48 GMT",
+  "date_delivered": "Sun, 12 Apr 2020 05:46:49 GMT",
+  "date_read": "Sun, 12 Apr 2020 05:47:38 GMT", // || or null if not read
+  "tapped_back": "Heart", // Heart | Up | Down | Ha | Exclamation | Question
+}
+```
+
+## Send videos
+
+Documentation coming soon
+
+## Use Tapbacks
+
+Documentation coming soon
+
+## Apple Cash
+
+Documentation coming soon
+
+# SMS
+
+Documentation coming soon
+
+# Webhooks
+
+Documentation coming soon
+
+## Status 
