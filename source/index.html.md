@@ -8,9 +8,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
   # - python
   # - javascript
 
-toc_footers:
-  - <a href='app.usebalto.com/signup'>Sign Up for a Developer Key</a>
-
 includes:
   - errors
 
@@ -21,23 +18,8 @@ search: true
 
 Welcome to the balto API docs. Poke around and feel free to reach out with any questions to `founders@withterra.com`
 
-To use any of these APIs, please <a href="app.usebalto.com/signup">Sign up</a> for access to an API Key and our playground.
+Reach out for access to the playground.
 
-# Authentication
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: Bearer API_KEY"
-```
-
-balto expects for the API key to be included in **all** API requests to the server in a header that looks like the following:
-
-`Authorization: Bearer API_KEY`
-
-<aside class="notice">
-You must replace <code>API_KEY</code> with your personal API key.
-</aside>
 
 # iMessages
 
@@ -47,7 +29,7 @@ Check if the given phone number is eligible for iMessages. If it's not, you can 
 
 ### HTTP Request
 
-`GET https://api.usebalto.com/is_imessage/<PHONE>`
+`GET https://usebalto.com/api/is_imessage/<PHONE>`
 
 > The endpoint returns JSON as below:
 
@@ -75,7 +57,7 @@ Special effects are an iMessage property that can be triggered in two ways.
 
 ### HTTP Request
 
-`POST https://api.usebalto.com/send/message`
+`POST https://usebalto.com/api/send`
 
 ### Headers
 
@@ -101,11 +83,11 @@ TEXT | The message you plan to send. i.e. "Hi!"
 
 ## Check iMessage status
 
-iMessages are queued. Use this to check if the message was delivered successfully, read, tapped_back etc.
+iMessages are queued. Use this to check if the message was delivered successfully, read
 
 ### HTTP Request
 
-`GET https://api.usebalto.com/message/<MESSAGE_UUID>`
+`GET https://usebalto.com/api/message/<MESSAGE_UUID>`
 
 Parameter | Description
 --------- | -----------
@@ -120,28 +102,5 @@ MESSAGE_UUID | The message uuid returned when you first sent a message. Or given
   "date_submitted": "Sun, 12 Apr 2020 05:46:48 GMT",
   "date_delivered": "Sun, 12 Apr 2020 05:46:49 GMT",
   "date_read": "Sun, 12 Apr 2020 05:47:38 GMT", // || or null if not read
-  "tapped_back": "Heart", // Heart | Up | Down | Ha | Exclamation | Question
 }
 ```
-
-## Send videos
-
-Documentation coming soon
-
-## Use Tapbacks
-
-Documentation coming soon
-
-## Apple Cash
-
-Documentation coming soon
-
-# SMS
-
-Documentation coming soon
-
-# Webhooks
-
-Documentation coming soon
-
-## Status 
