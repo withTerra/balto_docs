@@ -222,9 +222,6 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
             <a href="#imessages" class="toc-h1 toc-link" data-title="iMessages">iMessages</a>
               <ul class="toc-list-h2">
                   <li>
@@ -236,35 +233,12 @@
                   <li>
                     <a href="#check-imessage-status" class="toc-h2 toc-link" data-title="Check iMessage status">Check iMessage status</a>
                   </li>
-                  <li>
-                    <a href="#send-videos" class="toc-h2 toc-link" data-title="Send videos">Send videos</a>
-                  </li>
-                  <li>
-                    <a href="#use-tapbacks" class="toc-h2 toc-link" data-title="Use Tapbacks">Use Tapbacks</a>
-                  </li>
-                  <li>
-                    <a href="#apple-cash" class="toc-h2 toc-link" data-title="Apple Cash">Apple Cash</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#sms" class="toc-h1 toc-link" data-title="SMS">SMS</a>
-          </li>
-          <li>
-            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#status" class="toc-h2 toc-link" data-title="Status">Status</a>
-                  </li>
               </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='app.usebalto.com/signup'>Sign Up for a Developer Key</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -272,22 +246,11 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the balto API docs. Poke around and feel free to reach out with any questions to <code>founders@withterra.com</code></p>
 
-<p>To use any of these APIs, please <a href="app.usebalto.com/signup">Sign up</a> for access to an API Key and our playground.</p>
-<h1 id='authentication'>Authentication</h1><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: Bearer API_KEY"</span>
-</code></pre>
-<p>balto expects for the API key to be included in <strong>all</strong> API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: Bearer API_KEY</code></p>
-
-<aside class="notice">
-You must replace <code>API_KEY</code> with your personal API key.
-</aside>
+<p>Reach out for access to the playground.</p>
 <h1 id='imessages'>iMessages</h1><h2 id='check-for-imessage-compatibility'>Check for iMessage compatibility</h2>
 <p>Check if the given phone number is eligible for iMessages. If it&#39;s not, you can use Twilio to handle it. </p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.usebalto.com/is_imessage/&lt;PHONE&gt;</code></p>
+<p><code>GET https://usebalto.com/api/is_imessage/&lt;PHONE&gt;</code></p>
 
 <blockquote>
 <p>The endpoint returns JSON as below:</p>
@@ -314,7 +277,7 @@ You must replace <code>API_KEY</code> with your personal API key.
 <p>Special effects are an iMessage property that can be triggered in two ways.
 1. Automatically when using certain phrases i.e. &quot;Congratulations, Happy Birthday!&quot;</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://api.usebalto.com/send/message</code></p>
+<p><code>POST https://usebalto.com/api/send</code></p>
 <h3 id='headers'>Headers</h3>
 <table><thead>
 <tr>
@@ -352,9 +315,9 @@ You must replace <code>API_KEY</code> with your personal API key.
   </span><span class="s2">"message_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e71e2af-d91d-4eb9-8af6-c1ca0f910da7"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='check-imessage-status'>Check iMessage status</h2>
-<p>iMessages are queued. Use this to check if the message was delivered successfully, read, tapped_back etc.</p>
+<p>iMessages are queued. Use this to check if the message was delivered successfully, read</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.usebalto.com/message/&lt;MESSAGE_UUID&gt;</code></p>
+<p><code>GET https://usebalto.com/api/message/&lt;MESSAGE_UUID&gt;</code></p>
 
 <table><thead>
 <tr>
@@ -377,19 +340,8 @@ You must replace <code>API_KEY</code> with your personal API key.
   </span><span class="s2">"date_submitted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun, 12 Apr 2020 05:46:48 GMT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"date_delivered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun, 12 Apr 2020 05:46:49 GMT"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"date_read"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sun, 12 Apr 2020 05:47:38 GMT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">||</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">read</span><span class="w">
-  </span><span class="s2">"tapped_back"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heart"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Heart</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Up</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Down</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Ha</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Exclamation</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Question</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='send-videos'>Send videos</h2>
-<p>Documentation coming soon</p>
-<h2 id='use-tapbacks'>Use Tapbacks</h2>
-<p>Documentation coming soon</p>
-<h2 id='apple-cash'>Apple Cash</h2>
-<p>Documentation coming soon</p>
-<h1 id='sms'>SMS</h1>
-<p>Documentation coming soon</p>
-<h1 id='webhooks'>Webhooks</h1>
-<p>Documentation coming soon</p>
-<h2 id='status'>Status</h2><h1 id='errors'>Errors</h1>
+</span></code></pre><h1 id='errors'>Errors</h1>
 <p>The balto API uses the following error codes:</p>
 
 <table><thead>
