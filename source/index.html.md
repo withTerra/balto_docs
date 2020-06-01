@@ -29,7 +29,7 @@ Check if the given phone number is eligible for iMessages. If it's not, you can 
 
 ### HTTP Request
 
-`GET https://usebalto.com/api/is_imessage/<PHONE>`
+`GET https://www.usebalto.com/api/is_imessage/<PHONE>`
 
 > The endpoint returns JSON as below:
 
@@ -57,7 +57,7 @@ Special effects are an iMessage property that can be triggered in two ways.
 
 ### HTTP Request
 
-`POST https://usebalto.com/api/send`
+`POST https://www.usebalto.com/api/send`
 
 ### Headers
 
@@ -87,7 +87,7 @@ iMessages are queued. Use this to check if the message was delivered successfull
 
 ### HTTP Request
 
-`GET https://usebalto.com/api/message/<MESSAGE_UUID>`
+`GET https://www.usebalto.com/api/message/<MESSAGE_UUID>`
 
 Parameter | Description
 --------- | -----------
