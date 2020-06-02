@@ -250,16 +250,8 @@
 <h1 id='imessages'>iMessages</h1><h2 id='check-for-imessage-compatibility'>Check for iMessage compatibility</h2>
 <p>Check if the given phone number is eligible for iMessages. If it&#39;s not, you can use Twilio to handle it. </p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://www.usebalto.com/api/is_imessage/&lt;PHONE&gt;</code></p>
-
-<blockquote>
-<p>The endpoint returns JSON as below:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">given</span><span class="w"> </span><span class="err">phone</span><span class="w"> </span><span class="err">number</span><span class="w">
-  </span><span class="s2">"is_imessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='url-parameters'>URL Parameters</h3>
+<p><code>POST https://www.usebalto.com/api/is_imessage</code></p>
+<h3 id='json-body-parameters'>JSON Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -267,15 +259,21 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>PHONE</td>
+<td>phone</td>
 <td>The phone number to check. Formatted as all numerics i.e. 1234567890</td>
 </tr>
 </tbody></table>
-<h2 id='send-an-imessage'>Send an iMessage</h2>
+
+<blockquote>
+<p>The endpoint returns JSON as below:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"is_imessage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='send-an-imessage'>Send an iMessage</h2>
 <p>Use the following request to send an iMessage to the specified number. </p>
 <h4 id='using-special-effects'>Using Special Effects</h4>
-<p>Special effects are an iMessage property that can be triggered in two ways.
-1. Automatically when using certain phrases i.e. &quot;Congratulations, Happy Birthday!&quot;</p>
+<p>Special effects are an iMessage property that can be triggered via special keywords &quot;Congratulations, Happy Birthday!&quot;</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://www.usebalto.com/api/send</code></p>
 <h3 id='headers'>Headers</h3>
@@ -290,7 +288,7 @@
 <td>Your personal API_KEY</td>
 </tr>
 </tbody></table>
-<h3 id='json-body-parameters'>JSON Body Parameters</h3>
+<h3 id='json-body-parameters-2'>JSON Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -298,11 +296,11 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>PHONE</td>
+<td>phone</td>
 <td>The phone number to check. Formatted as all numerics i.e. 1234567890</td>
 </tr>
 <tr>
-<td>TEXT</td>
+<td>text</td>
 <td>The message you plan to send. i.e. &quot;Hi!&quot;</td>
 </tr>
 </tbody></table>
