@@ -68,7 +68,6 @@ text | The message you plan to send. i.e. "Hi!"
 
 ```json
 {
-  "phone": "PHONE",  // the given phone number
   "message_uuid": "6e71e2af-d91d-4eb9-8af6-c1ca0f910da7"
 }
 ```
@@ -89,8 +88,6 @@ MESSAGE_UUID | The message uuid returned when you first sent a message. Or given
 
 ```json
 {
-  "phone": "1234567890",
-  "message_uuid": "<MESSAGE_UUID",
   "date_submitted": "Sun, 12 Apr 2020 05:46:48 GMT",
   "date_delivered": "Sun, 12 Apr 2020 05:46:49 GMT",
   "date_read": "Sun, 12 Apr 2020 05:47:38 GMT", // || or null if not read
