@@ -57,12 +57,6 @@ Special effects are an iMessage property that can be triggered via special keywo
 
 `POST https://www.usebalto.com/api/send`
 
-### Headers
-
-HEADER | Description
---------- | -----------
-Authorization: Bearer API_KEY | Your personal API_KEY
-
 ### JSON Body Parameters
 
 Parameter | Description
