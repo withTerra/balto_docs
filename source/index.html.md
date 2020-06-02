@@ -51,7 +51,7 @@ Use the following request to send an iMessage to the specified number.
 
 #### Using Special Effects
 
-Special effects are an iMessage property that can be triggered via special keywords "Congratulations, Happy Birthday!"
+Special effects are an iMessage property that can be triggered via special keywords  i.e. "Congratulations",  " Happy Birthday!" etc.
 
 ### HTTP Request
 
