@@ -29,22 +29,21 @@ Check if the given phone number is eligible for iMessages. If it's not, you can 
 
 ### HTTP Request
 
-`GET https://www.usebalto.com/api/is_imessage/<PHONE>`
+`POST https://www.usebalto.com/api/is_imessage`
+
+### JSON Body Parameters
+
+Parameter | Description
+--------- | -----------
+phone | The phone number to check. Formatted as all numerics i.e. 1234567890
 
 > The endpoint returns JSON as below:
 
 ```json
 {
-  "phone": "PHONE",  // the given phone number
-  "is_imessage" : "True"
+  "is_imessage" : true
 }
 ```
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-PHONE | The phone number to check. Formatted as all numerics i.e. 1234567890
 
 ## Send an iMessage
 
@@ -52,8 +51,7 @@ Use the following request to send an iMessage to the specified number.
 
 #### Using Special Effects
 
-Special effects are an iMessage property that can be triggered in two ways.
-1. Automatically when using certain phrases i.e. "Congratulations, Happy Birthday!"
+Special effects are an iMessage property that can be triggered via special keywords "Congratulations, Happy Birthday!"
 
 ### HTTP Request
 
@@ -69,8 +67,8 @@ Authorization: Bearer API_KEY | Your personal API_KEY
 
 Parameter | Description
 --------- | -----------
-PHONE | The phone number to check. Formatted as all numerics i.e. 1234567890
-TEXT | The message you plan to send. i.e. "Hi!"
+phone | The phone number to check. Formatted as all numerics i.e. 1234567890
+text | The message you plan to send. i.e. "Hi!"
 
 > The endpoint returns JSON as below:
 
